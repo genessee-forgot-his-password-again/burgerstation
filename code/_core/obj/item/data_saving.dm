@@ -76,9 +76,9 @@
 		return null
 	FINALIZE(I)
 
-	if(I.contraband || !I.can_save)
-		qdel(I)
-		return null
+//	if(I.contraband || !I.can_save)
+//		qdel(I)
+//		return null
 
 	if(loadout && !SSbalance.can_save_loadout[I.type])
 		qdel(I)
@@ -90,9 +90,9 @@
 
 /obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	if( (contraband || !can_save) && !length(inventories)) //The inventory check prevents people from losing their stuff if a dev is dumb and adds a contraband item with storage.
-		if(contraband) P.to_chat(span("warning","Notice: \The [src.name] could not be saved because it is considered contraband."))
-		return null
+//	if( (contraband || !can_save) && !length(inventories)) //The inventory check prevents people from losing their stuff if a dev is dumb and adds a contraband item with storage.
+//		if(contraband) P.to_chat(span("warning","Notice: \The [src.name] could not be saved because it is considered contraband."))
+//		return null
 
 	if(loadout && !SSbalance.can_save_loadout[src.type])
 		P.to_chat(span("warning","Notice: \The [src.name] could not be stored in the loadout system because it isn't a standard item."))
