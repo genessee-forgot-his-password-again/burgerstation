@@ -14,3 +14,22 @@
 	dynamic_inventory_count = MAX_INVENTORY_X
 
 	value = 10
+
+/obj/item/storage/box/bank
+	name = "bankbox"
+	desc = "Bank expansions - no gold deposit required!"
+	desc_extended = "A metallic box with large amounts of storage space. Too big to be stored anywhere but a bank, though."
+
+	icon = 'icons/obj/item/storage/boxes.dmi'
+	icon_state = "box"
+
+	size = SIZE_10*6
+
+	is_container = TRUE
+	container_max_size = SIZE_10*5
+
+	dynamic_inventory_count = 8*10
+
+	value = 3000
+
+	rarity = RARITY_RARE
