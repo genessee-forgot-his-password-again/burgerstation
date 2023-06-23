@@ -16,9 +16,9 @@
 /obj/hud/inventory/dynamic/bank/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
 	if(!bypass)
-		if(length(I.inventories) && I.size >= SIZE_2)
-			if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
-			return FALSE
+//		if(length(I.inventories) && I.size >= SIZE_2)
+//			if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
+//			return FALSE
 
 		if(!I.can_save)
 			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
