@@ -20,10 +20,10 @@
 	desc = "Bank expansions - no gold deposit required!"
 	desc_extended = "A metallic box with large amounts of storage space. Too big to be stored anywhere but a bank, though."
 
-	icon = 'icons/obj/item/storage/boxes.dmi'
-	icon_state = "box"
+	icon = 'icons/obj/item/storage/death_box.dmi'
+	icon_state = "locked"
 
-	size = SIZE_10*6
+	size = SIZE_10
 
 	is_container = TRUE
 	container_max_size = SIZE_10*5
