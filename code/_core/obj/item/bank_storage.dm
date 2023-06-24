@@ -9,7 +9,7 @@
 
 	is_container = TRUE
 
-	max_inventory_x = 5
+	max_inventory_x = 8
 	dynamic_inventory_count = 8 * 8
 	inventory_y_multiplier = -1
 	starting_inventory_y = "TOP-2.25"
