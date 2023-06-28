@@ -89,7 +89,7 @@
 		var/node_length = length(node_path_current)
 		if(node_length && get_dist(node_path_current[node_length],objective_move) < VIEW_RANGE*0.5)
 			should_path = FALSE
-		if(should_path && !set_path_fallback(T))
+		if(should_path && !set_path_fallback(T,pathing_object=objective_move))
 			set_move_objective(null) //Failure. Can't get there.
 			return FALSE
 
@@ -107,6 +107,19 @@
 		return FALSE
 
 	var/turf/current_turf = get_turf(owner)
+
+	if(astar_path_current_object)
+		var/turf/object_turf = get_turf(astar_path_current_object)
+		if(object_turf)
+			var/current_distance = get_dist(current_turf,object_turf)
+			if(current_distance <= astar_path_current_object_sensitivity_min)
+				set_path_astar(null)
+				return FALSE
+			else if(current_distance >= astar_path_current_object_sensitivity_max)
+				set_path_astar(object_turf,pathing_object=astar_path_current_object)
+				if(!length(astar_path_current))
+					return FALSE
+
 	var/turf/desired_turf = astar_path_current[1]
 	if(current_turf == desired_turf)
 		astar_path_current.Cut(1,2)
@@ -341,6 +354,8 @@
 	if(!node_path_current[node_path_current_step])
 		return FALSE
 
+	obstacles.Cut() //Remove previous obstructions
+
 	var/obj/marker/map_node/desired_node = node_path_current[node_path_current_step]
 	var/turf/T1 = get_turf(owner)
 	var/list/obstructions = get_obstructions(T1,desired_node,ignore_living=TRUE)
@@ -350,15 +365,19 @@
 
 	var/turf/T2 = locate(desired_node.x,desired_node.y,desired_node.z)
 
-	if(set_path_astar(T2)) //Okay we found obstructions, but can we path through it?
+	if(set_path_astar(T2)) //Okay we found obstructions, but we can path through it.
 		return TRUE
 
 	for(var/k in obstructions) //Can't path though it, so we destroy it.
 		var/atom/A = k
 		if(!A.can_be_attacked(owner)) //Can't even destroy it. Just give up.
-			obstacles.Cut()
 			set_path_node(null)
 			break //Give up.
 		obstacles[A] = TRUE
 
-	return TRUE
+	//DEBUG STUFF
+	if(objective_attack && is_player(objective_attack))
+		objective_attack << "Obstacles: [obstacles]."
+
+
+	return length(obstacles)

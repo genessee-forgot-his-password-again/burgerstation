@@ -103,7 +103,7 @@
 					if(desired_target_turf && current_turf && desired_target_turf.z == current_turf.z)
 						var/target_distance = get_dist(current_turf,desired_target_turf) //Get distance of the AI to the target.
 						if(target_distance >= hunt_distance) //We're too far away. Lets find them.
-							set_path_fallback(desired_target_turf)
+							set_path_fallback(desired_target_turf) // We don't include pathing_object=hunt_target here for performance reasons.
 
 			//Astar path sanity.
 			if(frustration_astar_path_threshold > 0 && length(astar_path_current) && frustration_astar_path > frustration_astar_path_threshold)
@@ -120,19 +120,20 @@
 				frustration_move = 0
 				if(objective_attack)
 					if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
-					set_path_fallback(get_turf(objective_attack))
+					set_path_fallback(get_turf(objective_attack),pathing_object=objective_attack)
 				else if(objective_move)
 					if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_move due to movement failure...")
-					set_path_fallback(get_turf(objective_move))
+					set_path_fallback(get_turf(objective_move),pathing_object=objective_move)
 
 		var/result = src.handle_movement()
 		if(result && owner.move_dir)
 			if(owner.has_status_effect(REST))
 				owner.remove_status_effect(REST)
-			var/threshold_to_use = use_astar_on_frustration_move ? frustration_move_threshold*0.5 : frustration_move_threshold
-			if(frustration_move_threshold > 0 && frustration_move > threshold_to_use) //Bad movement.
-				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
-				should_remove_frustration = FALSE
+			if(sidestep_on_frustration_move)
+				var/threshold_to_use = use_astar_on_frustration_move ? frustration_move_threshold*0.5 : frustration_move_threshold
+				if(frustration_move_threshold > 0 && frustration_move > threshold_to_use) //Bad movement.
+					owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
+					should_remove_frustration = FALSE
 		else
 			owner.next_move = max(owner.next_move,SECONDS_TO_TICKS(1)) //Wait a bit.
 			owner.move_dir = 0x0 //Prevents frustration from running.
