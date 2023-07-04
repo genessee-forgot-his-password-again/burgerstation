@@ -43,6 +43,15 @@
 
 	var/icon_state_count = 3
 
+/obj/item/weapon/ranged/bow/get_heat_spread()
+
+	if(src.next_shoot_time > world.time)
+		return min(1,(src.next_shoot_time - world.time)/30)
+
+	return max(0,0.5 - (stage_current/stage_max))*0.2
+
+
+
 /obj/item/weapon/ranged/bow/Finalize()
 	. = ..()
 	update_sprite()
@@ -62,18 +71,22 @@
 		stage_max *= strength_mod
 		stage_max = CEILING(stage_max,1)
 
+/obj/item/weapon/ranged/bow/get_base_spread() //Per additional bullet.
+	return 0.1
+
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/bow/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
 	if(stage_current > 0 )
 		shoot(caller,object,location,params,max(stage_current/100,0.25))
 		stage_current = 0
-		next_shoot_time = world.time + 2
+		if(is_living(caller))
+			var/mob/living/L = caller
+			next_shoot_time = world.time + (10 - L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*4)
 		update_sprite()
 	return TRUE
 
@@ -83,6 +96,8 @@
 	if(object.loc && object.loc.plane >= PLANE_HUD)
 		return ..()
 	if(!is_advanced(caller))
+		return ..()
+	if(!can_gun_shoot(caller,object,location,params))
 		return ..()
 	current_shooter = caller
 	START_THINKING(src)
@@ -115,10 +130,6 @@
 
 	. = ..() || . //weirdest statement I ever wrote.
 
-
-/obj/item/weapon/ranged/bow/get_base_spread()
-	return 0.1
-
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 
 	if(!is_advanced(caller))
@@ -144,6 +155,13 @@
 
 /obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
 	return FALSE
+
+/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
+
+/obj/item/weapon/ranged/bow/get_hits_per_second()
+	return (stage_per_decisecond/stage_max)*10
 
 /obj/item/weapon/ranged/bow/wood
 	name = "wood bow"
@@ -197,7 +215,7 @@
 	ranged_damage_type = /damagetype/ranged/bow/hardlight
 
 	stage_per_decisecond = 10
-	stage_max = 50
+	stage_max = 100
 
 	icon_state_count = 4
 
@@ -216,6 +234,15 @@
 /obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/caller)
 	. = ..()
 	if(!.) return stored_arrow
+
+/obj/item/weapon/ranged/bow/hardlight/syndicate
+	name = "syndicate laser bow"
+	icon = 'icons/obj/item/weapons/ranged/bow/laser_bow.dmi'
+	icon_state_count = 3
+	stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight/syndicate
+	ranged_damage_type = /damagetype/ranged/bow/hardlight/syndicate
+	stage_per_decisecond = 8
+	stage_max = 125
 
 /obj/item/weapon/ranged/bow/ashen
 	name = "ashen bow"
@@ -237,13 +264,6 @@
 	icon_state_count = 4
 
 	rarity = RARITY_UNCOMMON
-
-/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
-	var/damagetype/D = all_damage_types[ranged_damage_type]
-	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
-
-/obj/item/weapon/ranged/bow/get_hits_per_second()
-	return (stage_per_decisecond/stage_max)*10
 
 
 

@@ -1,12 +1,12 @@
 /menu/dialogue/
-	file = "html/dialogue.html"
+	file = 'html/dialogue.html'
 	resources = list()
 
 /menu/dialogue/open(var/mob/user)
 	cache_resources(user)
 	winset(user, "map.dialogue","is-visible=true")
 
-	var/file_text = rustg_file_read(file)
+	var/file_text = rustg_file_read("[file]")
 
 	var/list/color_scheme = DEFAULT_COLORS
 
@@ -27,7 +27,7 @@
 	var/mob/living/advanced/player/P = user
 
 	if(!P.dialogue_target_id)
-		log_error("ERROR: [P.get_debug_name()] could not access dialogue as they had an invalid dialogue target id!")
+		log_error("ERROR: [P.get_debug_name()] could not access dialogue as they had a NULL dialogue target id!")
 		return FALSE
 
 	var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
