@@ -64,3 +64,15 @@
 	size = SIZE_10
 
 	rarity = RARITY_RARE
+
+/obj/item/clothing/back/storage/satchel/bluespace/debug
+	name = "satchel of immense holding"
+	desc = "ADMINBUSE"
+	desc_extended = "A satchel of holding which speeds up the wearer in addition to providing immense storage."
+
+	dynamic_inventory_count = 50
+	container_max_size = MAX_INVENTORY_X*5*SIZE_10
+	size = SIZE_1
+	rarity = RARITY_LEGENDARY
+	value = 150000
+	speed_bonus = 2
