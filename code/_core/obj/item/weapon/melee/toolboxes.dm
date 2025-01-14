@@ -36,6 +36,18 @@
 /obj/item/weapon/melee/toolbox/blue
 	color = "#0000FF"
 
+/obj/item/weapon/melee/toolbox/blue/mechanical
+	color = "#0000FF"
+	name = "mechanical toolbox"
+
+/obj/item/weapon/melee/toolbox/blue/mechanical/Generate()
+	new /obj/item/weapon/melee/tool/crowbar(src)
+	new /obj/item/weapon/melee/tool/multitool(src)
+	new /obj/item/weapon/melee/tool/screwdriver(src)
+	new /obj/item/weapon/melee/tool/wirecutters(src)
+	new /obj/item/weapon/melee/tool/wrench(src)
+	return ..()
+
 /obj/item/weapon/melee/toolbox/yellow
 	color = "#FFFF00"
 
