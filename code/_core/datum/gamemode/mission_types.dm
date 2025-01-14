@@ -63,3 +63,13 @@
 	. = ..()
 	add_objective(/objective/artifact)
 	add_objective(/objective/artifact)
+
+/gamemode/mission/nothing
+	name = "Freeplay"
+	gamemode_horde_data = /horde_data/nothing
+
+	interior_corpse_type = /mob/living/advanced/citizen
+	exterior_corpse_type = /mob/living/advanced/citizen
+
+/gamemode/mission/nothing/add_objectives()
+	. = ..()

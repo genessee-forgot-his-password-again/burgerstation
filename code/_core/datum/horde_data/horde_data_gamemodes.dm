@@ -64,3 +64,11 @@
 		/mob/living/advanced/npc/raging_mage/anti_bullet = 20,
 		/mob/living/advanced/npc/raging_mage/witch = 10
 	)
+
+/horde_data/nothing
+
+	horde_weights = list(
+		/mob/living/simple/slime/forest = 10,
+		/mob/living/simple/slime/water = 10,
+		/mob/living/simple/slime/cave = 5
+	)
