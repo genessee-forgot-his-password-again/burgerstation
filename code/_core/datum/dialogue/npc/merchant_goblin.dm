@@ -49,3 +49,39 @@
 			P.dialogue_target_id = null
 			close_menu(P,/menu/dialogue/)
 
+/dialogue/npc/goblin_merchant/employee
+
+/dialogue/npc/goblin_merchant/employee/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+
+	. = list()
+
+	.["hello"] = list(
+		"Welcome to the Quartermastery, mercenary. Would you like to #2 or #3 If you have died in a previous shift, we can also allow you to #1",
+		"*reclaim lost items.",
+		"*access your bank",
+		"*sell items for gold?"
+	)
+	.["*reclaim lost items."] = list("...")
+
+	.["*sell items for gold?"] = list("...")
+
+	.["*access your bank"] = list("...")
+
+/dialogue/npc/goblin_merchant/employee/set_topic(var/mob/living/advanced/player/P,var/topic)
+
+	. = ..()
+
+	switch(topic)
+		if("*reclaim lost items.")
+			load_deathbox(P,P.dialogue_target)
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
+		if("*access your bank")
+			P.access_bank()
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
+		if("*sell items for gold?")
+			P.add_sell_buttons()
+			P.dialogue_target_id = null
+			close_menu(P,/menu/dialogue/)
+
