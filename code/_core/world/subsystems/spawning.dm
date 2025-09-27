@@ -45,9 +45,9 @@ SUBSYSTEM_DEF(spawning)
 	if( L.dead || L.qdeleting)
 		if(!M.time_of_death)
 			M.time_of_death = world.time
-		if(M.time_of_death + M.time_to_respawn <= world.time)
-			M.time_of_death = null
-			return do_spawn(M)
+//		if(M.time_of_death + M.time_to_respawn <= world.time)
+//			M.time_of_death = null
+//			return do_spawn(M)
 
 	return FALSE
 
