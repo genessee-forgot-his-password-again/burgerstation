@@ -12,7 +12,7 @@
 
 
 /gamemode/mission/zombie
-	name = "Mission - Zombies + Blob"
+	name = "Mission - Zombies"
 	gamemode_horde_data = /horde_data/zombies
 
 	interior_corpse_type = /mob/living/advanced/npc/zombie/normal/decapitated
@@ -29,7 +29,7 @@
 			break
 
 /gamemode/mission/xeno
-	name = "Mission - Xenomorphs + Soldiers"
+	name = "Mission - Colonial Marines"
 	gamemode_horde_data = /horde_data/xeno_plus_soliders
 
 	interior_corpse_type = /mob/living/advanced/npc/citizen
@@ -53,7 +53,7 @@
 	add_objective(/objective/artifact)
 
 /gamemode/mission/raging_mages
-	name = "Mission - Raging Mages"
+	name = "Mission - Wizard Federation"
 	gamemode_horde_data = /horde_data/raging_mages
 
 	interior_corpse_type = /mob/living/advanced/npc/citizen
@@ -68,8 +68,8 @@
 	name = "Freeplay"
 	gamemode_horde_data = /horde_data/nothing
 
-	interior_corpse_type = /mob/living/advanced/citizen
-	exterior_corpse_type = /mob/living/advanced/citizen
+	interior_corpse_type = /mob/living/advanced/npc/citizen
+	exterior_corpse_type = /mob/living/advanced/npc/citizen
 
 /gamemode/mission/nothing/add_objectives()
 	. = ..()

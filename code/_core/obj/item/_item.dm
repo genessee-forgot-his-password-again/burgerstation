@@ -885,9 +885,6 @@
 
 /obj/item/proc/corrupt() //Change the object into a subtype of itself, or its parent type.
 
-	if(!can_corrupt)
-		return null
-
 	var/list/obj/item/possible_objects = list()
 
 	var/highest_value = 0

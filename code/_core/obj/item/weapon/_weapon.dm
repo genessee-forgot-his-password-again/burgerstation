@@ -44,8 +44,6 @@
 
 	var/recommended_value_mod = 1
 
-	can_corrupt = TRUE
-
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))

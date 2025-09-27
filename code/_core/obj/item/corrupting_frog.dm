@@ -37,7 +37,7 @@
 	if(!can_use) //Prevents race conditions.
 		return FALSE
 
-	if(target.no_drop || !target.can_save || !target.can_corrupt)
+	if(target.no_drop || !target.can_save || )
 		activator.to_chat(span("warning","You can't use \the [src.name] on \the [target.name]... perhaps try a different object."))
 		return FALSE
 
