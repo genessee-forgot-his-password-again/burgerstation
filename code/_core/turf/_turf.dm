@@ -45,7 +45,7 @@
 	has_dense_atom = FALSE
 
 	if(density)
-		has_dense_atom = "recalculate_atom_density() inherent turf density"
+		has_dense_atom = TRUE
 		return TRUE
 
 	for(var/k in src.contents)
@@ -53,7 +53,7 @@
 		if(M.abstract)
 			continue
 		if(M.density)
-			has_dense_atom = "recalculate_atom_density() [M.type]"
+			has_dense_atom = TRUE
 			break
 
 	return TRUE
@@ -192,7 +192,7 @@
 		has_opaque_atom = TRUE
 
 	if(density)
-		has_dense_atom = "/turf/New() inherent density"
+		has_dense_atom = TRUE
 
 
 /turf/PreDestroy()
@@ -200,8 +200,8 @@
 	return FALSE
 
 /*
-/turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	caller.face_atom(src)
+/turf/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
+	activator.face_atom(src)
 	return ..()
 */
 
@@ -270,7 +270,7 @@
 	*/
 
 	if(enterer.density && !enterer.abstract)
-		has_dense_atom = "/turf/Entered() [enterer.type]."
+		has_dense_atom = TRUE
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
@@ -346,10 +346,10 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
-	if(!is_living(caller))
+/turf/proc/can_construct_on(var/atom/activator,var/obj/structure/structure_to_make = null)
+	if(!is_living(activator))
 		return FALSE
-	var/mob/living/C = caller
+	var/mob/living/C = activator
 	C.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 

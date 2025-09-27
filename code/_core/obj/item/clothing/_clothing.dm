@@ -52,6 +52,8 @@
 		'sound/effects/inventory/rustle5.ogg'
 	)
 
+	can_corrupt = TRUE
+
 
 /obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()

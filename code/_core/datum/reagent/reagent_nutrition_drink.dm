@@ -11,7 +11,7 @@
 	liquid = 1
 
 	hydration_amount = 25
-	heal_factor = 0
+	heal_amount = 0
 
 	cooled_reagent_temp = T0C - 1
 	cooled_reagent_amount = 0
@@ -20,7 +20,7 @@
 
 	value = 0.75
 
-/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
@@ -58,7 +58,7 @@
 
 	hydration_amount = 25
 
-	heal_factor = 2
+	heal_amount = 2
 
 	value = 3
 
@@ -74,7 +74,7 @@
 	liquid = -0.5
 
 	hydration_amount = 25
-	heal_factor = 0
+	heal_amount = 0
 
 	heated_reagent_temp = T0C + 1
 	heated_reagent_amount = REAGENT_ROUNDING
@@ -94,7 +94,7 @@
 
 	flavor = "white noise"
 
-	heal_factor = 0
+	heal_amount = 0
 
 	liquid = 0.7
 	particle_size = 0.2

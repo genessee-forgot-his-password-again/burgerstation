@@ -66,23 +66,23 @@
 /reagent/New(var/desired_loc)
 
 	if(metabolism_stomach > 0 && metabolism_stomach < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_stomach value ([metabolism_stomach]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_stomach value ([metabolism_stomach]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_stomach = max(metabolism_stomach,REAGENT_ROUNDING)
 
 	if(metabolism_blood > 0 && metabolism_blood < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_blood value ([metabolism_blood]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_blood value ([metabolism_blood]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_blood = max(metabolism_blood,REAGENT_ROUNDING)
 
 	if(metabolism_skin > 0 && metabolism_skin < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_skin value ([metabolism_skin]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_skin value ([metabolism_skin]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_stomach = max(metabolism_skin,REAGENT_ROUNDING)
 
 	. = ..()
 
-/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/activator)
 	return amount_added
 
-/reagent/proc/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/proc/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/activator)
 
 	if(addiction && is_advanced(L))
 		var/mob/living/advanced/A = L
@@ -123,7 +123,7 @@
 /reagent/proc/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
 	return 0 //This is the amount to actually remove.
 
-/reagent/proc/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/proc/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	return TRUE
 
 /reagent/proc/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
