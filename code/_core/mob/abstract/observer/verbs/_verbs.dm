@@ -1,9 +1,10 @@
 /mob/abstract/observer/add_inherent_verbs()
+
 	verbs += /mob/abstract/observer/verb/new_character
 	verbs += /mob/abstract/observer/verb/load_character
 	verbs += /mob/abstract/observer/verb/load_most_recent_character
 	verbs += /mob/abstract/observer/verb/become_antagonist
-	verbs += /mob/abstract/observer/verb/observe
+
 
 	if(client)
 		client.verbs += /client/verb/jump_to_player
@@ -12,6 +13,10 @@
 		client.verbs += /client/verb/jump_to_mob
 		client.verbs += /client/verb/orbit_mob
 
+	return ..()
+
+/mob/abstract/observer/menu/add_inherent_verbs()
+	verbs += /mob/abstract/observer/verb/observe
 	return ..()
 
 /mob/abstract/observer/verb/observe()
@@ -29,4 +34,4 @@
 		to_chat(span("warning","You are already observing!"))
 		return FALSE
 
-	client.make_ghost(get_turf(src))
+	make_ghost()
