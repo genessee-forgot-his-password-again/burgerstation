@@ -15,7 +15,9 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "code\__tgs_defines.dm"
 #include "code\__version_check.dm"
+#include "code\tgs.dm"
 #include "code\__defines\_config.dm"
 #include "code\__defines\_defines.dm"
 #include "code\__defines\_paths.dm"
@@ -151,9 +153,6 @@
 #include "code\__helpers\sorts\__main.dm"
 #include "code\__helpers\sorts\sort_helpers.dm"
 #include "code\__helpers\sorts\sort_tim.dm"
-#include "code\__tgs\__tgs_defines.dm"
-#include "code\__tgs\tgs.dm"
-#include "code\__tgs\tgs\includes.dm"
 #include "code\_core\area\_area.dm"
 #include "code\_core\area\wizard.dm"
 #include "code\_core\area\burgerstation\_burgerstation.dm"
@@ -167,6 +166,7 @@
 #include "code\_core\area\mission\prefabs\house.dm"
 #include "code\_core\area\mission\prefabs\misc.dm"
 #include "code\_core\area\mission\prefabs\sol_base.dm"
+#include "code\_core\area\mission\prefabs\syndicate_megafortress.dm"
 #include "code\_core\area\shuttle\_shuttle.dm"
 #include "code\_core\area\space\_space.dm"
 #include "code\_core\atom\_atom.dm"
@@ -2423,6 +2423,7 @@
 #include "code\addons\lighting\lighting_source.dm"
 #include "code\addons\lighting\lighting_turf.dm"
 #include "code\addons\lighting\~lighting_undef.dm"
+#include "code\tgs\includes.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
 #include "scripts\macro.dms"
