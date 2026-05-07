@@ -12,6 +12,36 @@
 	rarity = RARITY_RARE
 	bank_bypass = TRUE
 
+// recolors for organizational purposes
+
+/obj/item/storage/bank_box/green
+	name = "standard bankbox (green)"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 15 items. This one has a green stripe on it."
+	icon_state = "green"
+
+/obj/item/storage/bank_box/red
+	name = "standard bankbox (red)"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 15 items. This one has a red stripe on it."
+	icon_state = "red"
+
+/obj/item/storage/bank_box/white
+	name = "standard bankbox (white)"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 15 items. This one has a white stripe on it."
+	icon_state = "white"
+
+/obj/item/storage/bank_box/blue
+	name = "standard bankbox (blue)"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 15 items. This one has a blue stripe on it."
+	icon_state = "blue"
+
+/obj/item/storage/bank_box/yellow
+	name = "standard bankbox (yellow)"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 15 items. This one has a yellow stripe on it."
+	icon_state = "yellow"
+
+
+// other sizes
+
 /obj/item/storage/bank_box/tiny
 	name = "extra-miniature bankbox"
 	desc = "Slightly bigger banks!"
@@ -43,7 +73,7 @@
 	value = 150000
 	dynamic_inventory_count = 5 * 5
 	rarity = RARITY_MYTHICAL
-	
+
 /obj/item/storage/bank_box/giga
 	name = "giga-expanded bankbox"
 	desc = "INSANELY bigger banks!!"
@@ -51,7 +81,7 @@
 	value = 300000
 	dynamic_inventory_count = 5 * 6
 	rarity = RARITY_MYTHICAL
-	
+
 /obj/item/storage/bank_box/max
 	name = "super-duper-crazy-mega-expanded bankbox"
 	desc = "THE BIGGEST BANKS EVER!!!"
@@ -67,4 +97,18 @@
 	value = 420691337
 	dynamic_inventory_count = 10 * 10
 	rarity = RARITY_LEGENDARY
+
+// sub-box for expanding your expanders. has science gone too far?
+
+/obj/item/storage/bank_box/sub_box
+	name = "sub-bankbox"
+	desc = "Infinite banks??"
+	desc_extended = "A bluespace-enhanced container which can be fit in a bank in order to effectively add more slots. Fits 30 items. This is a much smaller bank-box that can fit inside other bank boxes."
+	icon = 'icons/obj/item/storage/boxes.dmi'
+	icon_state = "box_of_doom"
+	size = SIZE_1
+	container_max_size = SIZE_8
+	value = 500000
+	dynamic_inventory_count = 5 * 6
+	rarity = RARITY_MYTHICAL
 
