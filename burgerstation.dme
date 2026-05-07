@@ -1848,6 +1848,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\_pistol.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\brown.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\classic.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\cof.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\dip.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\eagle.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\magazine\pistol\gyro.dm"
