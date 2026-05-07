@@ -77,9 +77,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/cof_handgun/mod
 	name = ".45 COF-5150 Pistol MOD"
-	desc_extended = "A large framed handgun chambering standard .45 magazines and ammunition. This model used the COF-5150 as a base and was modified extensively with an extended black steel slide, improved night sights, stainless steel safety lever, chamber, and barrel. \ 
-	A custom aluminum frame replaces the old polymer frame of the original model, and a set of black plastic grips holds a badge depicting a special operations unit logo with green text reading 'MHU'. \
-	The accuracy, and stopping power of this pistol could make some revolvers jealous at the cost of being cumbersome to handle."
+	desc_extended = "A large framed handgun chambering standard .45 magazines and ammunition. This model used the COF-5150 as a base and was modified extensively with an extended black steel slide, improved night sights, stainless steel safety lever, chamber, and barrel. \ A custom aluminum frame replaces the old polymer frame of the original model, and a set of black plastic grips holds a badge depicting a special operations unit logo with green text reading MHU. \ The accuracy, and stopping power of this pistol could make some revolvers jealous at the cost of being cumbersome to handle."
 	value = 1200
 	icon = 'icons/obj/item/weapons/ranged/pistol/cof_handgun_2.dmi'
 	shoot_delay = 4
